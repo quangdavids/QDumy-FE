@@ -35,8 +35,14 @@ const registerUser = async () => {
       password: password.value,
     });
 
-    router.push("/");
+    // Only push to router if registration was successful (no error in store)
+    if (!authStore.error) {
+      router.push("/");
+    } else {
+      error.value = authStore.error;
+    }
   } catch (e) {
+    error.value = e.response?.data?.message || "Registration failed";
     console.log(e);
   }
 };
@@ -169,7 +175,7 @@ watch(email, () => {
       class="hidden lg:flex w-1/2 items-center justify-center bg-gray-100 min-h-screen"
     >
       <img
-        src="/images/instructors/trish2.jpeg"
+        src="/images/student1.jpg"
         alt="Registration Banner"
         class="object-cover w-full h-full"
       />

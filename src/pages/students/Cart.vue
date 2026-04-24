@@ -43,9 +43,7 @@ const totalSum = computed(() => {
                 <p class="text-lg font-bold text-green-500">{{ c.price }}$</p>
               </div>
 
-              <div class="mt-auto mb-3 text-sm ml-2">
-                {{ c.lessons }} lectures . {{ c.hours }} hours
-              </div>
+            
             </div>
           </div>
         </div>

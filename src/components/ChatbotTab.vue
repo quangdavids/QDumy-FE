@@ -82,7 +82,7 @@ onMounted(() => {
         <div class="flex gap-3 items-cente">
           <div>
             <img
-              src="\images\students\blonde.jpg"
+              src="\images\quangdemy.png"
               class="w-7 h-7 rounded-full border"
             />
           </div>

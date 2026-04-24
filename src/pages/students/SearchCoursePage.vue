@@ -46,15 +46,10 @@ const totalPages = ref(1);
 const totalProducts = ref(0);
 const limit = ref(9);
 const displaySearch = async () => {
-  if (!route.query.query) {
-    searchResults.value = [];
-    return;
-  }
-
   try {
     const response = await axios.get(`${api}courses/search`, {
       params: {
-        query: route.query.query,
+        query: route.query.query || "",
         page: route.query.page || 1,
         limit: limit.value,
         level: route.query.level,

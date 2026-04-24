@@ -52,7 +52,7 @@ const Faqs = ref([
   <div class="min-h-screen max-w-screen">
     <div class="relative">
       <img
-        src="/images/students/ebony.jpg "
+        src="/images/students/student1.jpg "
         class="object-cover brightness-75 h-50 w-screen"
       />
       <div

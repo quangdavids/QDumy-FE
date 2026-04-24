@@ -143,7 +143,7 @@ onMounted(() => {
             >
               <td class="flex py-4 px-2 gap-4">
                 <img
-                  src="/images/students/alexa.png"
+                  src="/images/students/student1.jpg"
                   class="w-15 h-15 outline-1 outline-gray-300 rounded-full"
                 />
                 <div>

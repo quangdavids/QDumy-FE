@@ -12,7 +12,7 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import { useCourseStore } from "../../stores/course.store";
+
 import CourseDetails from "./CourseDetails.vue";
 register();
 
@@ -254,11 +254,14 @@ const handleNavigation = function (id) {
     class="w-full h-auto mx-auto "
   >
     <SwiperSlide v-for="course in latestCourses" :key="course._id" class="p-3">
-      <CourseCard
+     <CourseCard
         :price="course.price"
         :title="course.title"
         :description="course.description"
+        :lecturer="course.lecturerId.lecturerName"
         :images="course.courseImage"
+        :rating="course.rating"
+        :no-of-lessons="course.lessons.length"
         @click="handleNavigation(course._id)"
       />
     </SwiperSlide>
@@ -400,7 +403,7 @@ const handleNavigation = function (id) {
           class="flex flex-col gap-3 p-3 border-3 border-gray-200 hover:border-green-500 transition durarion-300 rounded-xl"
         >
           <div class="max-w-85 p-2">
-            <img src="/images/instructors/blonde1.jpeg " class="rounded-xl" />
+            <img src="/images/student2.jpg " class="rounded-xl" />
           </div>
           <div class="flex flex-col justify-center items-center">
             <p class="text-[26px] font-semibold">Laura Mortensen
@@ -437,7 +440,7 @@ const handleNavigation = function (id) {
           class="flex flex-col gap-2 p-3 border-3 border-gray-200 hover:border-green-500 transition durarion-300 rounded-xl"
         >
           <div class="max-w-85 p-2">
-            <img src="/images/instructors/blonde2.jpeg " class="rounded-xl" />
+            <img src="/images/teacher2.jpg " class="rounded-xl" />
           </div>
           <div class="flex flex-col justify-center items-center">
             <p class="text-[26px] font-semibold">Milan Jurasek
@@ -474,7 +477,7 @@ const handleNavigation = function (id) {
           class="flex flex-col gap-2 p-3 border-3 border-gray-200 hover:border-green-500 transition durarion-300 rounded-xl"
         >
           <div class="max-w-85 p-2">
-            <img src="/images/instructors/blonde3.jfif " class="rounded-xl" />
+            <img src="/images/teacher3.jpg " class="rounded-xl" />
           </div>
           <div class="flex flex-col justify-center items-center">
             <p class="text-[26px] font-semibold"> Amila Piotrowska

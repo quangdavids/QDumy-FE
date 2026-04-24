@@ -6,6 +6,7 @@ import InstructorSidebar from "../../components/InstructorSidebar.vue";
 import { useNotificationStore } from "../../stores/notification.store";
 import { storeToRefs } from "pinia";
 import axios from "axios";
+import { useAuthStore } from "../../stores/auth.store";
 
 const notificationStore = useNotificationStore();
 const { notifications, unreadCount } = storeToRefs(notificationStore);
@@ -15,7 +16,24 @@ console.log(route.path);
 const unread = computed(() => unreadCount.value || 0);
 const isOpen = ref(false);
 
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
+const lecturerData = ref("");
+const getLecturer = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/api/lecturer-data/${user.value._id}`,
+    );
+    lecturerData.value = response.data.lecturer;
+    console.log(response.data);
+    console.log(lecturerData.value);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 onMounted(() => {
+    getLecturer();
     if (!notificationStore.isConnected) {
     // Fallback: fetch if socket isn't connected within a timeout
     setTimeout(() => {
@@ -134,7 +152,7 @@ onMounted(() => {
                 </Menu>
               </div>
               <img
-                src="/images/students/ebony.jpg"
+                :src="lecturerData.profilePic || 'https://media.istockphoto.com/id/469962702/photo/blonde-teacher-smiling-in-front-of-blurred-class-background.jpg?s=612x612&w=0&k=20&c=ZyXhvpHtlRnuecENnacaHgu4pOuE-Zg-U_LftX0P1CU='"
                 class="w-12 h-12 rounded-full"
               />
             </div>

@@ -90,8 +90,7 @@ const overviews = ref([
   { section: "Overview" },
   { section: "Curriculum" },
   { section: "Instructor" },
-  { section: "Reviews" },
-  { section: "Quiz" },
+  { section: "Reviews" }
 ]);
 
 const overviewClicked = function (index) {
