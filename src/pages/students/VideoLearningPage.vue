@@ -1,7 +1,7 @@
 <script setup>
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed, watch } from "vue";
 import { nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { useAuthStore } from "../../stores/auth.store";
@@ -92,8 +92,12 @@ onMounted(() => {
   getTotalTime()
 });
 
+// Watch for when lesson data is loaded and play first video
+
+
 let playingIndex = ref(0);
 let videoRef = ref(null);
+
 function selectVideo(index) {
   playingIndex.value = index;
     if (videoRef.value) {
@@ -140,10 +144,20 @@ const handleVideoEnded = async () => {
 
 const videoPlaying = computed(() => {
   if (courseLessons.value.length > 0) {
-    return courseLessons.value[playingIndex.value]?.videoUrl || "";
+    return courseLessons.value[playingIndex.value]?.videoUrl ;
+  } else {
+    return courseLessons.value[0]?.videoUrl
   }
   return "";
 });
+
+watch(courseLessons, async (newLessons) => {
+  if (newLessons.length > 0 && videoRef.value) {
+    await nextTick();
+    videoRef.value.load();
+    videoRef.value.play();
+  }
+}, { once: true });
 
 const formatDuration = (seconds) => {
   const totalSeconds = Math.round(seconds);
@@ -171,7 +185,7 @@ console.log(playingIndex.value);
           id="player"
           class="aspect-video w-full relative  mx-auto"
           preload="auto"
-          autoplay
+         
           controls
           @ended="handleVideoEnded"
         >

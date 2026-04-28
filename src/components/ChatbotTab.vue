@@ -6,14 +6,16 @@ import { useRouter } from "vue-router";
 import CoursePill from "./CoursePill.vue";
 import { useAuthStore } from "../stores/auth.store";
 import { storeToRefs } from "pinia";
-const messages = ref([]);
-const userInput = ref("");
-const container = ref(null);
 
 const authStore = useAuthStore()
 const { user } = storeToRefs(authStore)
 const router = useRouter()
 const isCloseChatbot = ref(false)
+
+const messages = ref([]);
+const userInput = ref("");
+const container = ref(null);
+
 const getGeminiRecommendation = async () => {
   if (userInput.value.trim()) {
     messages.value.push({
@@ -42,17 +44,6 @@ const getMessages = async () => {
 
 };
 
-const handleNavigation = function (id) {
-  
-  try {
-    router.push({
-      path: `/course/${id}`,
-    });
-  } catch (e) {
-    console.error(`Error ${e}`);
-  }
-};
-
 watch(
   messages,
   async () => {
@@ -63,6 +54,17 @@ watch(
   },
   { deep: true }
 );
+
+const handleNavigation = function (id) {
+  
+  try {
+    router.push({
+      path: `/course/${id}`,
+    });
+  } catch (e) {
+    console.error(`Error ${e}`);
+  }
+};
 
 const isOpen = ref(false)
 

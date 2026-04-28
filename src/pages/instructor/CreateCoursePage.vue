@@ -278,7 +278,7 @@ const updateCourse = async () => {
         </div>
       </div>
 
-      <!-- Main Content -->
+      
       <div
         class="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-100"
       >

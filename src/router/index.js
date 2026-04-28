@@ -36,7 +36,7 @@ import { useAuthStore } from "../stores/auth.store";
 const routes = [
   { path: "/", component: HomePage, meta: {showChatbot: true} },
   { path: "/home", component: HomePage, meta: {showChatbot: true} },
-  { path: "/login", component: LoginPage  },
+  { path: "/login", component: LoginPage},
   { path: "/register", component: RegisterPage },
   // meta:
   // {
@@ -65,9 +65,10 @@ const routes = [
    { path: "/payment-success", component: PaymentSuccess,
      meta: { hideNavbar: true, hideFooter: true }
    },
-   { path: "/payment-cancel", component: PaymentCancel,
+    { path: "/payment-cancel", component: PaymentCancel,
      meta: { hideNavbar: true, hideFooter: true }
    },
+
    { path: "/contact", component: ContactPage, meta: {showChatbot: true}},
   {
     path: "/support",

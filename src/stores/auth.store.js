@@ -10,8 +10,6 @@ export const useAuthStore = defineStore("auth", {
 
   getters: {
     isAuthenticated: (state) => !!state.user,
-    isLecturer: (state) => state.user?.isLecturer || false,
-    isAdmin: (state) => state.user?.role === 'admin',
   },
   actions: {
     async register(data) {
@@ -90,25 +88,6 @@ export const useAuthStore = defineStore("auth", {
       console.log(e)
     }
     },
-    async refreshToken() {
-      try {
-        const response = await axios.post(
-          "http://localhost:3000/auth/refresh-token",
-          {},
-          { withCredentials: true }
-        );
-        this.token = response.data.accessToken;
-        localStorage.setItem("token", this.token);
-        this.error = null;
-        return this.token;
-      } catch (err) {
-        this.token = null;
-        this.user = null;
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        this.error = err.response?.data?.message || "Token refresh failed";
-        throw new Error(this.error);
-      }
-    },
+  
   },
 });

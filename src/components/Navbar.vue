@@ -116,7 +116,10 @@ const closeMobileMenu = () => {
 
 onMounted(() => {
   cartStore.fetchCourses();
+  // Don't fetch notifications here - wait for socket to connect first
+  // Socket connection will trigger the initial fetch in initSocket()
   if (!notificationStore.isConnected) {
+    // Fallback: fetch if socket isn't connected within a timeout
     setTimeout(() => {
       if (!notificationStore.isConnected) {
         notificationStore.fetchNotfications();

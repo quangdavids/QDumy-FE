@@ -136,7 +136,7 @@ const toVideoLearning = () => {
 
   router.push({
     name: "CourseLecture",
-    params: { courseId: courseId },
+    params: { courseId: courseId  },
   });
 };
 
