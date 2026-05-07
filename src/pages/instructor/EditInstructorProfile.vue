@@ -42,7 +42,7 @@ onMounted(async () => {
     }
 
     const response = await axios.get(
-      `https://qdumy-server.onrender.com/api/lecturer-data/${userId}`,
+      `http://localhost:3000/api/lecturer-data/${userId}`,
       {
         headers: {
           Authorization: `Bearer ${authStore.token}`,

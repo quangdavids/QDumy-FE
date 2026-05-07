@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
-
+import { toast } from 'vue3-toastify'
 // Video recording state
 const isRecording = ref(false);
 const recordedChunks = ref([]);
@@ -206,7 +206,7 @@ const addLesson = async () => {
         }
       );
       console.log('Create response:', response.data);
-      alert('Lesson added successfully!');
+      toast.success("Lesson added successfully!", {autoClose:2000})
     }
     
     // Reset form

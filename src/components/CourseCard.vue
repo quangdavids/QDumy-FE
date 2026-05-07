@@ -68,13 +68,14 @@ const owned = ref(false);
             {{ noOfLessons }} lectures
           </div>
         </div>
-
+<div v-if="!props.ownedStatus">
         <div v-if="props.price === 0 || props.price === undefined" class="text-green-500 font-bold  text-xl">
            Free
         </div>
 
          <div v-else-if="props.price > 0" class="text-green-500 font-bold  text-xl">
            ${{ price }}
+        </div>
         </div>
 
         <div v-if="props.progress !== undefined && props.progress <=25" class="flex items-center gap-2.5">

@@ -18,7 +18,7 @@ const handleCancel = function () {
         <div class="text-sm font-semibold tracking-wide text-white">
           {{ props.header }}
         </div>
-        <i class="fa fa-x text-white"></i>
+        <i class="fa fa-x text-white font-bold cursor-pointer"  @click="handleCancel"></i>
       </div>
       <div class="p-7 text-left text-[16px] border-b-1 border-gray-300">
         {{ props.message }}?

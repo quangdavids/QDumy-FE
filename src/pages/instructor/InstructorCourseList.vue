@@ -138,8 +138,10 @@ const handleNavigationToLessons = async (courseId) => {
           Create Course
         </button>
       </div>
-      <div v-if="lecturer.ownedCourses == 0" class="md:ml-20 sm:mr-auto mt-5">
-        You have no courses yet, please create a course
+      <div v-if="totalCourse === 0" class="flex items-center self-center mx-auto text-center p-7 mt-5">
+       
+       <p class="text-center ml-auto mr-auto mb-6 text-gray-600"> You have no courses yet, please create a course 
+        </p>
       </div>
 
       <div
@@ -283,7 +285,7 @@ const handleNavigationToLessons = async (courseId) => {
         </div>
       </div>
 
-      <div class="flex mx-auto justify-center items-center space-y-2 mb-2">
+      <div v-if="totalCourse === 0" class="flex mx-auto justify-center items-center space-y-2 mb-2">
         <div class="flex justify-evenly gap-3">
           <button
             @click="changePage(currentPage - 1)"

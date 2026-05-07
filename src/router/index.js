@@ -106,7 +106,7 @@ const routes = [
   {
     path: "/instructor",
     component: InstuctorPage,
-    meta: { hideNavbar: true },
+    meta: { hideNavbar: true, hideFooter:true },
     children: [
       { path: "course", component: CreateCourse },
       { path: "", component: CreateCourse },

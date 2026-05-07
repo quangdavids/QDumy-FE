@@ -144,6 +144,8 @@ watch([level, priceType, currentPage, rating], () => {
   });
 });
 
+
+
 const open = ref(false);
 
 const openFilter = function () {
@@ -169,10 +171,11 @@ const openFilter = function () {
     >
       <div
         v-if="open"
-        class="md:w-1/4 absolute bottom-0.5 z-1000 modal-overlay p-8 max-[900px]:hidden md:block shadow-xl overflow-auto"
+        class="md:w-1/3 absolute bottom-0.5 z-1000 modal-overlay p-8 max-[900px]:hidden md:block shadow-xl overflow-auto"
       >
         <div class="flex justify-between items-center">
           <p class="font-bold text-lg">Filter By</p>
+         
           <i
             class="fa-solid fa-x hover:text-red-500 cursor-pointer"
             @click="openFilter"

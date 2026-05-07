@@ -7,10 +7,11 @@ import { useAuthStore } from "../../stores/auth.store";
 import { storeToRefs } from "pinia";
 import vue3StarRatings from "vue3-star-ratings";
 import axios from "axios";
+import {toast} from 'vue3-toastify'
+import { useCartStore } from "../../stores/cart.store";
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 const props = defineProps(["courseId"]);
-import { useCartStore } from "../../stores/cart.store";
 const cartStore = useCartStore();
 const { courses } = storeToRefs(cartStore)
 
@@ -24,7 +25,7 @@ const router = useRouter();
 const courseId = route.params.id;
 console.log(courseId);
 const lecturer = ref("")
-import {toast} from 'vue3-toastify'
+
 const getCourseDetail = async () => {
   try {
     const response = await getCourseAPI(courseId);
@@ -367,10 +368,7 @@ console.log(courses.value)
             <div class="mt-3">
               <p class="text-[23px] font-bold">About Instructor</p>
               <div class="mt-2">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed,
-                quam voluptatum possimus quas mollitia aliquam in voluptatem
-                ullam repellat numquam totam accusantium sapiente animi eos
-                dolore enim quidem ab porro!
+              {{ lecturer.biography }}
               </div>
             </div>
           </div>

@@ -249,7 +249,7 @@ onMounted(() => {
     </div>
 
     <div class="w-full p-3 chart-container shadow-md rounded-lg">
-       <p class="text-center font-semibold text-lg mb-4">Course Access Daily</p>
+       <p class="text-center font-semibold text-lg mb-4">Lessons Completed vs Remaining</p>
       <div class="h-[300px] w-full p-4 rounded-lg">
         <Bar :data="barData" :options="barOptions" />
       </div>

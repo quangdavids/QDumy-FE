@@ -144,12 +144,12 @@ watch(email, () => {
 
           <button
             @click.prevent="registerUser()"
-            class="font-bold mt-6 bg-green-500 w-full text-white p-3 rounded-full hover:bg-green-600 transition"
+            class="font-bold mt-6 cursor-pointer bg-green-500 w-full text-white p-3 rounded-full hover:bg-green-600 transition"
           >
             Register
           </button>
 
-          <p class="text-center text-gray-600 text-sm mt-8">
+          <p class="text-center cursor-pointer text-gray-600 text-sm mt-8">
             ALready have an account?
             <router-link
               to="/login"

@@ -155,7 +155,7 @@ console.log(user);
               class="h-8 w-auto"
               alt="QuangStudy Logo"
             />
-            <span class="font-bold text-lg text-gray-900 ml-2 hidden sm:inline"
+            <span class="font-bold text-lg text-white ml-2 hidden sm:inline"
               >QuangStudy</span
             >
           </RouterLink>
@@ -305,9 +305,9 @@ console.log(user);
                 <MenuButton
                   class="flex items-center gap-3 hover:opacity-80 transition-opacity"
                 >
-                  <div class="text-right hidden sm:block">
-                    <p class="text-xs">Welcome</p>
-                    <p class="text-sm font-medium text-gray-900">
+                  <div class="text-right hidden sm:block cursor-pointer">
+                    <p class="text-sm">Welcome</p>
+                    <p class="text-xs font-medium text-gray-400 shadow-sm">
                       {{ user?.username }}
                     </p>
                   </div>

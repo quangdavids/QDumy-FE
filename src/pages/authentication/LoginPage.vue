@@ -136,7 +136,7 @@ const handleLogin = async () => {
             <button
               @click.prevent="handleLogin"
               type="button"
-              class="w-full py-2.5 px-4 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200"
+              class="w-full cursor-pointer py-2.5 px-4 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200"
             >
               Log In
             </button>
@@ -160,7 +160,7 @@ const handleLogin = async () => {
           </form>
 
           <!-- Sign Up Link -->
-          <p class="text-center text-gray-600 text-sm mt-8">
+          <p class="text-center cursor-pointer text-gray-600 text-sm mt-8">
             Don't have an account?
             <router-link
               to="/register"
