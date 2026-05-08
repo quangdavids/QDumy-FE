@@ -1,6 +1,6 @@
 <script setup>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import dayjs from "dayjs";
 import { useRouter } from "vue-router";
 import ConfirmationDialog from "../../components/ConfirmationDialog.vue";
@@ -21,11 +21,9 @@ const getAllUsers = async () => {
     totalUsers.value = response.data.totalUsers;
     totalPages.value = response.data.totalPages;
     currentPage.value = response.data.currentPage;
-    console.log(users.value);
-    console.log(totalPages.value);
-    console.log(currentPage.value);
   } catch (err) {
     console.log(err);
+    toast.error("Failed to load users", { autoClose: 2000 });
   }
 };
 
@@ -33,8 +31,12 @@ const changePage = (newPage) => {
   try {
     if (newPage > 0 && newPage <= totalPages.value) {
       currentPage.value = newPage;
-      console.log(currentPage.value);
-      getAllUsers();
+      // If filters are active, use filterUsers, otherwise use getAllUsers
+      if (selectedRole.value || selectedStatus.value || searchQuery.value) {
+        filterUsers();
+      } else {
+        getAllUsers();
+      }
     }
   } catch (err) {
     console.log(err);
@@ -103,6 +105,39 @@ const toUserProfile = async (userId) => {
     console.log(err);
   }
 };
+
+const selectedRole = ref("");
+const selectedStatus = ref("");
+const searchQuery = ref("");
+
+const filterUsers = async () => {
+  try {
+    const params = {
+      page: currentPage.value,
+      limit: limit.value
+    };
+    
+    if (selectedRole.value) params.role = selectedRole.value;
+    if (selectedStatus.value) params.status = selectedStatus.value;
+    if (searchQuery.value) params.search = searchQuery.value;
+
+    const response = await axios.get("http://localhost:3000/api/admin/filter-users", { params });
+    users.value = response.data.users;
+    totalUsers.value = response.data.totalUsers;
+    totalPages.value = response.data.totalPages;
+    currentPage.value = response.data.currentPage;
+  } catch (err) {
+    console.log(err.message);
+    toast.error("Failed to filter users", { autoClose: 2000 });
+  }
+};
+
+watch([selectedRole, selectedStatus, searchQuery], () => {
+  currentPage.value = 1;
+  filterUsers();
+});
+
+
 onMounted(() => {
   getAllUsers();
 });
@@ -117,6 +152,7 @@ onMounted(() => {
       <div class="p-3 rounded-t-lg border-slate-800/20 border-1 border-b-0">
         <div class="flex gap-3">
           <input
+            v-model="searchQuery"
             type="text"
             placeholder="Search for student's name"
             class="text-xs outline-1 rounded-md outline-slate-400 focus:outline-3 p-2"
@@ -124,20 +160,22 @@ onMounted(() => {
 
           <select
             id="role"
+            v-model="selectedRole"
             class="text-xs font-bold text-slate-700 outline-1 rounded-md outline-slate-400 focus:outline-3 p-2"
           >
-            <option disabled selected hidden>All Roles</option>
-            <option value="student">Student</option>
-            <option value="instructor">Instructor</option>
+            <option value="">All Roles</option>
+            <option value="user">Student</option>
+            <option value="lecturer">Lecturer</option>
           </select>
 
           <select
             id="status"
+            v-model="selectedStatus"
             class="text-xs font-bold text-slate-700 outline-1 rounded-md outline-slate-400 focus:outline-3 p-2"
           >
-            <option disabled selected hidden>All Status</option>
-            <option value="active">Active</option>
-            <option value="suspended">Suspended</option>
+            <option value="">All Status</option>
+            <option value="Active">Active</option>
+            <option value="Suspended">Suspended</option>
           </select>
         </div>
       </div>
@@ -185,7 +223,7 @@ onMounted(() => {
             </td>
             <td>
               <div
-                v-if="!user.isLecturer"
+                v-if="user.role === 'user'"
                 class="bg-blue-200 rounded-lg text-center py-1"
               >
                 <p class="text-blue-700 font-semibold tracking-wide capitalize">

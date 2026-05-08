@@ -93,7 +93,7 @@ const previewFiles = function (event, mediaType) {
             <img
               v-if="newImage"
               :src="typeof newImage === 'string' ? newImage : newImage.url"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-contain"
               alt="Course Thumbnail"
             />
             <div v-else class="text-center p-4 text-gray-400">

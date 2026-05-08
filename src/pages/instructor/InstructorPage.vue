@@ -53,11 +53,7 @@ onMounted(() => {
         <div class="px-2">
           <div class="flex justify-between mb-2">
             <div class="p-3 border-b-gray-200 w-full relative border-b-1">
-              <input
-                type="text"
-                class="w-60 p-2 text-sm rounded-md bg-gray-100"
-                placeholder="Global search"
-              />
+            
             </div>
 
             <div class="flex self-center gap-3 py-2 px-5">

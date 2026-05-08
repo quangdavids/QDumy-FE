@@ -1,6 +1,6 @@
 <script setup>
 import AdminSidebar from '../../components/AdminSidebar.vue';
-import GlobalSearchBar from '../../components/GlobalSearchBar.vue';
+
 
 </script>
 

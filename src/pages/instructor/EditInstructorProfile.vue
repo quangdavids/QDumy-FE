@@ -19,7 +19,7 @@ const lecturerInfo = ref({
   fullName: "",
   email: "",
   jobTitle: "",
-  description: "",
+  biography: "",
   facebook: "",
   linkedIn: "",
   Xlink: "",
@@ -56,7 +56,7 @@ onMounted(async () => {
         fullName: lecturer.lecturerName || "",
         email: lecturer.email || "",
         jobTitle: lecturer.jobTitle || "Instructor at QDumy",
-        description: lecturer.biography || "",
+        biography: lecturer.biography || "",
         facebook: lecturer.socialLinks?.facebook || "",
         linkedIn: lecturer.socialLinks?.linkedin || "",
         Xlink: lecturer.socialLinks?.twitter || "",
@@ -121,7 +121,7 @@ const editLecturerInfo = async () => {
     formData.append("lecturerName", lecturerInfo.value.fullName);
     formData.append("email", lecturerInfo.value.email);
     formData.append("jobTitle", lecturerInfo.value.jobTitle);
-    formData.append("biography", lecturerInfo.value.description);
+    formData.append("biography", lecturerInfo.value.biography);
     formData.append("facebook", lecturerInfo.value.facebook);
     formData.append("linkedin", lecturerInfo.value.linkedIn);
     formData.append("twitter", lecturerInfo.value.Xlink);
@@ -260,7 +260,7 @@ const editLecturerInfo = async () => {
       <QuillEditor
         theme="snow"
         content-type="html"
-        v-model="lecturerInfo.description"
+        v-model:content="lecturerInfo.biography"
         toolbar="full"
         style="min-height: 200px; border-radius: 5px; background-color: #faf9f5"
       />

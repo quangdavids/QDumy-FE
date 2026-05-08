@@ -336,12 +336,12 @@ console.log(courses.value)
                   class="object-cover rounded-lg w-50 h-50"
                 />
               </div>
-              <div>
+              <div class="flex flex-col ml-3">
                 <div class="font-bold text-[23px]">
                   {{ lecturer.lecturerName }}
                 </div>
-                <div class="text-gray-800">Lecturer at QuangStudy</div>
-                <div class="mt-2 flex justify-around gap-5">
+                <div class="text-gray-800 mt-3">{{ lecturer.jobTitle }}</div>
+                <div class=" flex justify-end mt-auto mb-5 gap-6">
                   <div>
                     <i
                       class="fa-brands text-lg outline-1 text-blue-500 fa-facebook-f border rounded-full w-13 h-13 text-center p-4 hover:text-white cursor-pointer hover:bg-blue-500"
@@ -367,8 +367,8 @@ console.log(courses.value)
             </div>
             <div class="mt-3">
               <p class="text-[23px] font-bold">About Instructor</p>
-              <div class="mt-2">
-              {{ lecturer.biography }}
+              <div class="mt-2" v-html="lecturer.biography">
+             
               </div>
             </div>
           </div>

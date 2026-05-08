@@ -161,7 +161,7 @@ onMounted(() => {
                   <div class="w-full bg-gray-200 rounded-full h-2.5">
                     <div
                       class="bg-red-600 h-2.5 rounded-full"
-                      :style="{ width: student.progressPercent }"
+                      :style="{ width: `${student.progressPercent}%` }"
                     ></div>
                   </div>
                   <div class="text-md text-red-500 font-semibold">
@@ -179,7 +179,7 @@ onMounted(() => {
                   <div class="w-full bg-gray-200 rounded-full h-2.5">
                     <div
                       class="bg-yellow-600 h-2.5 rounded-full"
-                      :style="{ width: student.progressPercent }"
+                      :style="{ width: `${student.progressPercent}%` }"
                     ></div>
                   </div>
                   <div class="text-md text-yellow-500 font-semibold">
@@ -191,7 +191,7 @@ onMounted(() => {
                   <div class="w-full bg-gray-200 rounded-full h-2.5">
                     <div
                       class="bg-green-600 h-2.5 rounded-full"
-                      :style="{ width: student.progressPercent }"
+                      :style="{ width: `${student.progressPercent}%` }"
                     ></div>
                   </div>
                   <div class="text-md text-green-500 font-semibold">

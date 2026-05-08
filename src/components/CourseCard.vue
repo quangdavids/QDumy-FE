@@ -25,7 +25,7 @@ const owned = ref(false);
       <div class="relative">
         <div class="relative overflow-hidden">
   <img  :src="images"  class="transform w-full 
-  object-cover h-50 -z-2 transition-transform  duration-300 hover:scale-110">
+  object-contain h-50 -z-2 transition-transform   duration-300 hover:scale-110">
 </div>
        
         <button class=" absolute top-0.5 

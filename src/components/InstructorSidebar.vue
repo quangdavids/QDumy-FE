@@ -63,9 +63,9 @@ console.log(route.path);
             "
           >
           <div
-            class="flex p-3 transform items-baseline duration-150 hover:text-white gap-7 cursor-pointer hover:bg-green-500 w-full"
+            class="flex p-3 transform items-baseline duration-150 hover:text-white gap-6 cursor-pointer hover:bg-green-500 w-full"
           >
-            <i class="fa-solid fa-graduation-cap mt-1 ml-3  text-xl"></i>
+            <i class="fa-solid fa-graduation-cap mt-1 ml-3 text-xl"></i>
             <span class="text-md font-normal ">  Students </span>
           </div>
           </RouterLink>
