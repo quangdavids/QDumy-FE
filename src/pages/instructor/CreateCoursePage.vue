@@ -185,10 +185,12 @@ const addCourse = async () => {
 
 const updateCourse = async () => {
   try {
+    loading.value = true;
+    
     const formData = new FormData();
     formData.append("title", editCourseData.value.title);
     formData.append("introduction", editCourseData.value.introduction);
-    formData.append("lecturerId", user.value._id);
+    formData.append("lecturerId", instructor.value);
     formData.append("level", editCourseData.value.level);
     formData.append("category", editCourseData.value.category);
     formData.append("description", editCourseData.value.description);
@@ -213,7 +215,7 @@ const updateCourse = async () => {
       formData.append("courseImage", editCourseData.value.courseImage);
     }
 
-    // FIX: Send formData directly as the request body
+
     const response = await axios.put(
       `http://localhost:3000/api/courses/${route.params.courseId}`,
       formData, // Send formData directly
@@ -233,6 +235,9 @@ const updateCourse = async () => {
     router.push("/instructor/course");
   } catch (e) {
     console.error("Update error:", e);
+  } finally {
+    loading.value = false;
+    uploadProgress.value = 0;
   }
 };
 </script>

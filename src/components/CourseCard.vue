@@ -28,14 +28,14 @@ const owned = ref(false);
   object-contain h-50 -z-2 transition-transform   duration-300 hover:scale-110">
 </div>
        
-        <button class=" absolute top-0.5 
+        <!-- <button class=" absolute top-0.5 
        cursor-pointer hover:inset-shadowx-xs transform
        durarion-300 right-1 rounded-full w-10 h-10 z-2 bg-white">
         <i
           class="fa-regular fa-heart mt-1 text-center text-2xl"
           style="color: tomato"
         ></i>
-        </button>
+        </button> -->
         
       </div>
 

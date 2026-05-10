@@ -144,7 +144,7 @@ onMounted(() => {
               <td class="flex py-4 px-2 gap-4">
                 <img
                   src="/images/students/student1.jpg"
-                  class="w-15 h-15 outline-1 outline-gray-300 rounded-full"
+                  class="w-15 h-15  outline-1 object-cover outline-gray-300 rounded-full"
                 />
                 <div>
                   <p class="text-sm font-bold">{{ student.username }}</p>

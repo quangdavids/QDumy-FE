@@ -25,7 +25,7 @@ const unread = computed(() => unreadCount.value || 0);
 const signOut = async function () {
   try {
     await authStore.logout();
-    router.push("/login");
+    await router.push("/login");
   } catch (e) {
     console.log(e);
   }
@@ -59,10 +59,7 @@ const createLecturer = async (lecturerId) => {
       `http://localhost:3000/api/lecturer/${lecturerId}`,
     );
     await getLecturerStatus();
-    router.push({
-      path: "/instructor",
-      params: lecturerId,
-    });
+    await router.push("/instructor");
     isMobileMenuOpen.value = false;
     console.log(response.data);
   } catch (error) {
@@ -71,10 +68,7 @@ const createLecturer = async (lecturerId) => {
 };
 
 const toLecturer = async (lecturerId) => {
-  router.push({
-    path: "/instructor",
-    params: lecturerId,
-  });
+  await router.push("/instructor");
 };
 
 const toStudentDashboard = async () => {

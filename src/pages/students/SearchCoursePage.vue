@@ -54,7 +54,8 @@ const displaySearch = async () => {
         limit: limit.value,
         level: route.query.level,
         priceType: route.query.priceType,
-        rating: route.query.rating
+        rating: route.query.rating,
+        categories: route.query.category
       },
       paramsSerializer: {
         indexes: null, 
@@ -103,7 +104,8 @@ onMounted(() => {
   level.value = route.query.level || [];
   priceType.value = route.query.priceType || "";
   currentPage.value = Number(route.query.page) || 1;
-  rating.value = route.query.rating
+  rating.value = route.query.rating;
+  category.value = route.query.category || []
 });
 
 watch(
@@ -123,6 +125,12 @@ watch(
       ? [route.query.level]
       : [];
 
+       category.value = Array.isArray(route.query.category)
+      ? route.query.category
+      : route.query.category
+      ? [route.query.category]
+      : [];
+
     priceType.value = route.query.priceType || "";
     currentPage.value = Number(route.query.page) || 1;
     rating.value = route.query.rating
@@ -130,13 +138,14 @@ watch(
   { immediate: true }
 );
 
-watch([level, priceType, currentPage, rating], () => {
+watch([level, priceType, currentPage, rating, category], () => {
   if (!route.query.query) return;
 
   router.replace({
     query: {
       ...route.query,
       level: level.value.length ? level.value : undefined,
+      category: category.value.length ? category.value : undefined,
       priceType: priceType.value || undefined,
       page: currentPage.value > 1 ? currentPage.value : undefined,
       rating: rating.value || undefined
@@ -205,7 +214,7 @@ const openFilter = function () {
             </div>
           </div>
           <br />
-
+<!-- 
           <p class="font-bold text-lg mb-2">Language</p>
           <div
             v-for="(language, index) in displayedLanguages"
@@ -218,14 +227,43 @@ const openFilter = function () {
                 <span :class="`fi fi-${language.flag}`"></span
               ></label>
             </div>
-          </div>
+          </div> -->
 
-          <button
+          <!-- <button
             @click="showAll = !showAll"
             class="underline text-left cursor-pointer text-blue-600 hover:text-blue-700"
           >
             {{ showAll ? "Show Less" : "Show More" }}
-          </button>
+          </button> -->
+
+            <p class="font-bold mb-2 text-lg">Category</p>
+          <div class="flex gap-3">
+            <input
+              type="checkbox"
+              id="computer_science"
+              v-model="category"
+              value="Computer Science"
+            />
+            <label for="category"> Computer Science</label>
+          </div>
+          <div class="flex gap-3">
+            <input
+              type="checkbox"
+              id="musical"
+              v-model="category"
+              value="Musical"
+            />
+            <label for="category"> Musical </label>
+          </div>
+          <div class="flex gap-3">
+            <input
+              type="checkbox"
+              id="finance"
+              v-model="category"
+              value="Finance"
+            />
+            <label for="category"> Finance</label>
+          </div>
 
           <br />
 
@@ -302,7 +340,7 @@ const openFilter = function () {
           :price="course.price"
           :title="course.title"
           :description="course.description"
-          :lecturer="course.lecturer"
+          :lecturer="course.lecturerId.lecturerName"
           :images="course.courseImage"
           @click="handleNavigation(course._id)"
         />

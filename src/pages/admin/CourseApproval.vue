@@ -183,9 +183,9 @@ onMounted(() => {
 
                <div class="flex gap-2 items-center">
                <div class="max-w-10 max-h-10">
-                <img :src="course.lecturerId.profilePic" class="object-cover rounded-full w-7 h-7">
+                <img :src="course.lecturerId?.profilePic" class="object-cover rounded-full w-7 h-7">
                </div>
-                <span class="text-black font-bold text-xs"> {{ course.lecturerId.lecturerName }} </span>
+                <span class="text-black font-bold text-xs"> {{ course.lecturerId?.lecturerName }} </span>
               
               </div>
 
@@ -296,9 +296,9 @@ onMounted(() => {
 
                <div class="flex gap-2 items-center">
                <div class="max-w-10 max-h-10">
-                <img :src="course.lecturerId.profilePic" class="object-cover rounded-full w-7 h-7">
+                <img :src="course.lecturerId?.profilePic" class="object-cover rounded-full w-7 h-7">
                </div>
-                <span class="text-black font-bold text-xs"> {{ course.lecturerId.lecturerName }} </span>
+                <span class="text-black font-bold text-xs"> {{ course.lecturerId?.lecturerName }} </span>
               
               </div>
 
@@ -404,7 +404,7 @@ onMounted(() => {
 
                <div class="flex gap-2 items-center">
                <div class="max-w-10 max-h-10">
-                <img :src="course.lecturerId.profilePic" class="object-cover rounded-full w-7 h-7">
+                <img :src="course.lecturerId?.profilePic" class="object-cover rounded-full w-7 h-7">
                </div>
                 <span class="text-black font-bold text-xs"> {{ course.lecturerId.lecturerName }} </span>
               

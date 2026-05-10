@@ -55,7 +55,7 @@ onMounted(getEnrolledCourses);
 
 <template>
   <div
-    class="h-30 flex items-center max-w-full justify-start w-auto bg-gray-800 text-white"
+    class="h-30 flex items-center max-w-full  justify-start w-auto bg-gray-800 text-white"
   >
     <div class="ml-20 text-3xl font-bold">My Courses</div>
   </div>
@@ -91,8 +91,7 @@ onMounted(getEnrolledCourses);
       v-for="course in courses"
       :key="course._id"
       :title="course.title"
-      description="Deep Dive in Core Java programming -Standard Edition. A Practical approach to learn Java. Become a Java Expert"
-      :lecturer="course.lecturerId.lecturerName"
+      :lecturer="course.lecturerId?.lecturerName"
       :images="course.courseImage"
       owned-status="true"
       :progress="course.progressPercent"
@@ -108,7 +107,6 @@ onMounted(getEnrolledCourses);
       v-for="course in queryCourses"
       :key="course._id"
       :title="course.title"
-      description="Deep Dive in Core Java programming -Standard Edition. A Practical approach to learn Java. Become a Java Expert"
       :lecturer="course.lecturerId.lecturerName"
       :images="course.courseImage"
       owned-status="true"

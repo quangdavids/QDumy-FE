@@ -31,7 +31,7 @@ const totalSum = computed(() => {
         <div v-for="(c, index) in courses" :key="index" class="mr-4 shadow-lg bg-white rounded-lg">
           <div class="flex h-auto ">
             <div class="p-3">
-              <img :src="c.courseImage" class="w-50 h-40 border object-cover">
+              <img :src="c.courseImage" class="w-50 h-40 shadow-sm outline-1 outline-gray-300 object-contain">
             </div>
             <div class="flex flex-col flex-1">
               <div class="p-2 flex justify-between">

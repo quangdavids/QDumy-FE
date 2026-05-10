@@ -149,7 +149,7 @@ onMounted(() => {
               </div>
               <img
                 :src="lecturerData.profilePic || 'https://media.istockphoto.com/id/469962702/photo/blonde-teacher-smiling-in-front-of-blurred-class-background.jpg?s=612x612&w=0&k=20&c=ZyXhvpHtlRnuecENnacaHgu4pOuE-Zg-U_LftX0P1CU='"
-                class="w-12 h-12 rounded-full"
+                class="w-12 outline-1 h-12 object-cover rounded-full"
               />
             </div>
           </div>

@@ -223,7 +223,7 @@ console.log(courses.value)
             <div class="mt-5">
               Lectured by
               <u class="hover:text-black cursor-pointer">
-                {{ lecturer.lecturerName }}
+                {{ lecturer?.lecturerName }}
               </u>
             </div>
           </div>
@@ -332,15 +332,15 @@ console.log(courses.value)
             <div class="flex gap-3 max-w-full">
               <div class="max-w-50">
                 <img
-                  :src="course.lecturerId.profilePic"
+                  :src="course.lecturerId?.profilePic"
                   class="object-cover rounded-lg w-50 h-50"
                 />
               </div>
               <div class="flex flex-col ml-3">
                 <div class="font-bold text-[23px]">
-                  {{ lecturer.lecturerName }}
+                  {{ lecturer?.lecturerName }}
                 </div>
-                <div class="text-gray-800 mt-3">{{ lecturer.jobTitle }}</div>
+                <div class="text-gray-800 mt-3">{{ lecturer?.jobTitle }}</div>
                 <div class=" flex justify-end mt-auto mb-5 gap-6">
                   <div>
                     <i
@@ -367,7 +367,7 @@ console.log(courses.value)
             </div>
             <div class="mt-3">
               <p class="text-[23px] font-bold">About Instructor</p>
-              <div class="mt-2" v-html="lecturer.biography">
+              <div class="mt-2" v-html="lecturer?.biography">
              
               </div>
             </div>
@@ -377,7 +377,7 @@ console.log(courses.value)
             class="mt-7 flex flex-col max-h-full gap-2"
             v-if="active === 'Reviews'"
           >
-            <div v-if="latestReviews" class="flex flex-col gap-2">
+            <div v-if="latestReviews.length > 0" class="flex flex-col gap-2">
               <div
                 v-for="review in latestReviews"
                 :key="review._id"
@@ -409,21 +409,23 @@ console.log(courses.value)
                   </div>
                 </div>
               </div>
+              
             </div>
 
-            <div v-else>
-              <div class="flex flex-col gap-4 justify-center items-center h-75">
+             
+              <div v-else class="flex flex-col gap-4 justify-center items-center h-75">
                 <div>
                   <i class="fa fa-comment text-[50px]"></i>
                 </div>
                 <div>
-                  There are no ratings yet. Give your first impression of the
-                  course
+                  There are no ratings yet.
                 </div>
               </div>
-            </div>
+           
 
-            <div class="mt-auto flex justify-end flex-col gap-3 w-full">
+          
+
+            <div v-if="courseBoughtStatus" class="mt-auto flex justify-end flex-col gap-3 w-full">
               <div class="font-semibold tracking-wide text-lg text-slate-400 "> Rating</div>
               <vue3-star-ratings v-model="rating"/>
 

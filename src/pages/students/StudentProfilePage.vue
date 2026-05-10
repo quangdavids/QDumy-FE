@@ -97,7 +97,7 @@ const editUserProfile = async () => {
     profileImg.value = null;
     imgPreview.value = null;
     
-    toast.success("Profile updated successfully", { autoClose: 2000})
+    toast.success("Profile updated successfully", { autoClose: 2000 })
     getUserProfile()
   } catch (err) {
     console.log(err);

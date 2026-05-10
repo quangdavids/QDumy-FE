@@ -14,6 +14,8 @@ const route = useRoute();
 const id = route.params.userId;
 const userInfo = ref();
 console.log(id)
+
+
 const getUserInfo = async () => {
   try {
     if (id) {
@@ -42,12 +44,12 @@ onMounted(() => {
     >
       <div class="flex mr-auto ml-10 gap-5 p-2">
         <div class="max-w-30">
-          <img :src="userInfo?.profileImg" class="rounded-full w-30 h-30 shadow outline-1" />
+          <img :src="user?.profileImg" class="rounded-full w-30 h-30 shadow object-contain outline-1" />
         </div>
         <div class="flex flex-col gap-2 mb-4">
           <div class="flex gap-3 text-2xl">
             <span class="font-bold max-w-80 mt-10">{{
-              userInfo?.username
+              user?.username
             }}</span>
             <!-- <i class="fi fi-gh mt-10"></i> -->
           </div>
